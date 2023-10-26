@@ -1,4 +1,4 @@
-file = io.open("input1.txt", "r")
+file = io.open("input.txt", "r")
 io.input(file)
 
 max = {0, 0, 0}
