@@ -29,7 +29,9 @@ def part2
     end
   end
 
-  return bucket.max(3).sum
+  # return bucket.max(3).sum
+  # what is faster? 
+  return bucket.sort_by{|n| -n}.take(3).sum
 end
 
 
