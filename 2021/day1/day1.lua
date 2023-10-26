@@ -1,6 +1,6 @@
 
 function part1() 
-    local file = io.open("input1.txt", "r")
+    local file = io.open("input.txt", "r")
     io.input(file)
 
     local prev = nil
@@ -23,7 +23,7 @@ function part1()
 end
 
 function part2() 
-    local file = io.open("input1.txt", "r")
+    local file = io.open("input.txt", "r")
     io.input(file)
 
     local v = 0
