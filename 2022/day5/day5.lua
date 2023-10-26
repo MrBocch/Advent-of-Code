@@ -11,7 +11,7 @@ function part1()
         {"M","Q","L","F","D","S"}
     }
 
-    local file = io.open("input5.txt","r")
+    local file = io.open("input.txt","r")
     io.input(file)
 
     for i=1, 10 do --skips over the stacks
@@ -62,7 +62,7 @@ function part2()
         {"M","Q","L","F","D","S"}
     }
 
-    local file = io.open("input5.txt","r")
+    local file = io.open("input.txt","r")
     io.input(file)
 
     for i=1, 10 do --skips over the stacks

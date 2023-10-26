@@ -5,7 +5,7 @@ values = {"a","b","c","d","e","f","g","h",
 }
 
 function part1()
-    file = io.open("input3.txt", "r")
+    file = io.open("input.txt", "r")
     io.input(file)
     local sum = 0
     while true do
@@ -39,7 +39,7 @@ function part1()
 end
 
 function part2()
-    file = io.open("input3.txt", "r")
+    file = io.open("input.txt", "r")
     io.input(file)
     
     local sum = 0

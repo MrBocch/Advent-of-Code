@@ -1,6 +1,6 @@
 
 function part1()
-    local file = io.open("input4.txt", "r")
+    local file = io.open("input.txt", "r")
     io.input(file)
 
     local contained = 0
@@ -34,7 +34,7 @@ function part1()
 end
 
 function part2()
-    local file = io.open("input4.txt", "r")
+    local file = io.open("input.txt", "r")
     io.input(file)
 
     local overlaps = 0

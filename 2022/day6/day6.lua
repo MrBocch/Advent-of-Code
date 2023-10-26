@@ -1,6 +1,6 @@
 
 function part1()
-    local file = io.open("input6.txt","r")
+    local file = io.open("input.txt","r")
     io.input(file)
 
     local string = io.read("*all")
@@ -29,7 +29,7 @@ function part1()
 end
 
 function part2()
-    local file = io.open("input6.txt")
+    local file = io.open("input.txt")
     io.input(file)
 
     local string = io.read("*all")
