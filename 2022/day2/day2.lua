@@ -42,7 +42,7 @@ won = 6
 points = 0
 
 function part1()
-    file = io.open("input2.txt", "r")
+    file = io.open("input.txt", "r")
     io.input(file)
 
     while true do
@@ -88,7 +88,7 @@ function part1()
         end
 
     end
-    print(points) -- 13565
+    print("Part1: "..points) -- 13565
 end
 
 part1()
@@ -97,7 +97,7 @@ function part2()
     -- X: lose
     -- Y: draw
     -- Z: win    
-    file = io.open("input2.txt", "r")
+    file = io.open("input.txt", "r")
     io.input(file)
 
     points = 0
@@ -148,7 +148,7 @@ function part2()
             end
         end
     end
-    print(points)
+    print("Part2: "..points)
 end
 --12324 
 part2()
