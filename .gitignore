@@ -1,1 +1,9 @@
+# how automate delete txt
+# import os
+# dir = os.listdir(".")
+# remove anything that is not year from list
+# for year in dirs:
+#     for day in os.listdir(f"{year}/."):
+#             os.remove(f"{year}/{day}/input.txt")
+
 *.txt
