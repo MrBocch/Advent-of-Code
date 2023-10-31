@@ -35,9 +35,9 @@ def part2
   i = 1
   open("input.txt", "r").each {|line|
     line.chomp!
-    if i == 1 then p1.push(line.split("").uniq) end
-    if i == 2 then p2.push(line.split("").uniq) end
-    if i == 3 then p3.push(line.split("").uniq) end
+    if    i == 1 then p1.push(line.split("").uniq) 
+    elsif i == 2 then p2.push(line.split("").uniq) 
+    elsif i == 3 then p3.push(line.split("").uniq) end
 
     i+1 > 3 ? i = 1 : i += 1
     # i++ breaks code why?
