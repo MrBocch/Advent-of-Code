@@ -1,3 +1,11 @@
+class Assignment
+  attr_reader :start, :ends 
+
+  def initialize(start, ends)
+    @start = start 
+    @ends = ends
+  end
+end
 
 def part1
   pairs = [] 
@@ -9,16 +17,12 @@ def part1
 
   contain = 0
   pairs.each do |pair|
-    # variable names are so bad
-    lbeg = pair.first[0].to_i
-    rbeg = pair.first[1].to_i
+    p1 = Assignment.new(pair.first[0].to_i, pair.first[1].to_i)
+    p2 = Assignment.new(pair.last[0].to_i, rend = pair.last[1].to_i)
 
-    lend = pair.last[0].to_i
-    rend = pair.last[1].to_i
-
-    if lend <= lbeg and rend >= rbeg 
+    if p2.start <= p1.start and p2.ends >= p1.ends 
       contain += 1 
-    elsif lbeg <= lend and rbeg >= rend 
+    elsif p1.start <= p2.start and p1.ends >= p2.ends
       contain += 1
     end
   end
@@ -36,15 +40,12 @@ def part2
 
   overlap = 0
   pairs.each do |pair|
-    p1start = pair.first[0].to_i
-    p1end = pair.first[1].to_i
+    p1 = Assignment.new(pair.first[0].to_i,  pair.first[1].to_i)
+    p2 = Assignment.new(pair.last[0].to_i, pair.last[1].to_i)
 
-    p2start = pair.last[0].to_i
-    p2end = pair.last[1].to_i
-
-    if p1start <= p2start and p1end >= p2start 
+    if p1.start <= p2.start and p1.ends >= p2.start  
       overlap += 1
-    elsif p2start <= p1start and p2end >= p1start
+    elsif p2.start <= p1.start and p2.ends >= p1.start  
       overlap += 1
     end
   end
