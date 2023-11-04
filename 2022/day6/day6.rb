@@ -22,5 +22,6 @@ def part2
 
   return nil
 end
+
 puts "Part1: #{part1}"
 puts "Part2: #{part2}"
