@@ -6,6 +6,7 @@ class Assignment
     @ends = ends
   end
 end
+# should use (x..y).include?()
 
 def part1
   pairs = [] 
