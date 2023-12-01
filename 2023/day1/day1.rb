@@ -24,7 +24,7 @@ def part2
   }
 
   x = 0
-  open("input.txt","r").each do |line|
+  open("test.txt","r").each do |line|
     line.chomp!
     line = line.split("")
     # find value of first digit 
@@ -58,6 +58,7 @@ def part2
         w_first_idx["nine"] = (line.join("")).index('nine')
       end
     end
+
     w_first_idx = w_first_idx.to_a .filter{|n| n[1] != nil} .min{|a, b| a[1] <=> b[1]}
 
     (1..9).each do |i|
@@ -127,6 +128,13 @@ def part2
       n << nums[w_last_idx[0]]
     end
     
+    puts "digits"
+    p [line[dig_first_idx], line[dig_last_idx]]
+
+    puts "words"
+    p [nums[w_first_idx[0]], nums[w_last_idx[0]]]
+    
+    puts "#{line.join("")} #{n}"
     x += n.to_i
   end
 
