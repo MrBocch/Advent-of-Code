@@ -12,6 +12,14 @@ end
 
 def part2
 
+  # this is so ugly, im sorry
+  # i thought, i should write quick and dirty
+  # code, so that i could reach a high rank on
+  # the leaderboard, but that only slowed me 
+  # down when i could not solve it first try
+  # and had to see what did i do wrong
+  # valuable lesson here
+
   nums = {"one" => '1',
           "two" => '2',
           "three" => '3',
@@ -24,7 +32,7 @@ def part2
   }
 
   x = 0
-  open("test.txt","r").each do |line|
+  open("input.txt","r").each do |line|
     line.chomp!
     line = line.split("")
     # find value of first digit 
@@ -89,7 +97,6 @@ def part2
     # we want to get the first number, that is digit or word 
     # then we want to get last number, that is digir or word 
 
-    n = ""
     # dig_first_idx
     # dig_last_idx
     # is the index of a number found 
@@ -102,39 +109,41 @@ def part2
     # is the [number, index] of first letter word we found 
     # ["eight", 0]
 
-    if not dig_first_idx.nil?
-      if w_first_idx.nil?
-        n << line[dig_first_idx]
-      
-      elsif dig_first_idx.to_i < w_first_idx[1].to_i
+    # how do i handle the nil cases?
+   
+    # helpfull debugging lol
+    # puts "#{line.join("")}"
+
+    n = ""
+    if not dig_first_idx.nil? and not w_first_idx.nil?
+      # if both are not nil
+      if dig_first_idx.to_i < w_first_idx[1].to_i
         n << line[dig_first_idx]
       else 
         n << nums[w_first_idx[0]]
-      end 
-    else 
-      n << nums[w_first_idx[0]]
-    end
-
-    if not dig_last_idx.nil?
-      if w_last_idx.nil?
-        n << line[dig_last_idx]
-
-      elsif dig_last_idx.to_i < w_last_idx[1].to_i
+      end
+    
+      # my mistake was this, i was not using greater than here, lol im tired ok 
+      if dig_last_idx > w_last_idx[1].to_i 
         n << line[dig_last_idx]
       else 
-        n << nums[w_last_idx[0]]
-      end 
-    else
-      n << nums[w_last_idx[0]]
-    end
-    
-    puts "digits"
-    p [line[dig_first_idx], line[dig_last_idx]]
+        n << nums[w_last_idx[0]] 
+      end   
 
-    puts "words"
-    p [nums[w_first_idx[0]], nums[w_last_idx[0]]]
-    
-    puts "#{line.join("")} #{n}"
+    # if dig is nil but words is not nil
+    elsif dig_first_idx.nil? and not w_first_idx.nil? 
+      n << nums[w_first_idx[0]]
+      n << nums[w_last_idx[0]]
+
+    # if dig is not nil but words is nil
+    elsif not dig_first_idx.nil? and w_first_idx.nil?
+      n << line[dig_first_idx]
+      n << line[dig_last_idx]
+    end
+
+    # helpfull debuggin lol
+    # puts n + "\n\n"
+
     x += n.to_i
   end
 
