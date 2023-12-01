@@ -61,10 +61,9 @@ def part2
       elsif i == 9
         w_first_idx["nine"] = (line.join("")).index('nine')
       end
-   end
+    end
+    w_first_idx = w_first_idx.to_a .filter{|n| n[1] != nil} .min{|a, b| a[1] <=> b[1]}
 
-   # w_first_idx = w_first_idx.to_a .filter{|n| n[1] != nil} .min{|n| n[1]}
-   w_first_idx = w_first_idx.to_a
     (1..9).each do |i|
       if i == 1 
         w_last_idx["one"] = (line.join("")).rindex('one')
@@ -85,11 +84,11 @@ def part2
       elsif i == 9
         w_last_idx["nine"] = (line.join("")).rindex('nine')
       end
-   end
+    end
 
-   # w_last_idx = w_last_idx.to_a .filter{|n| n[1] != nil} .max{|n| n[1]}
-   w_last_idx = w_last_idx.to_a
-   p [w_first_idx, w_last_idx]
+    w_last_idx = w_last_idx.to_a .filter{|n| n[1] != nil} .max{|a, b| a[1] <=> b[1]}
+
+    p [w_first_idx, w_last_idx]
   end
 
   return x
