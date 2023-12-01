@@ -12,18 +12,19 @@ end
 
 def part2
 
-  nums = {"one" => 1,
-          "two" => 2,
-          "three" => 3,
-          "four" => 4,
-          "five" => 5,
-          "six" => 6,
-          "seven" => 7,
-          "eight" => 8,
-          "nine" => 9}
+  nums = {"one" => '1',
+          "two" => '2',
+          "three" => '3',
+          "four" => '4',
+          "five" => '5',
+          "six" => '6',
+          "seven" => '7',
+          "eight" => '8',
+          "nine" => '9'
+  }
 
   x = 0
-  open("test.txt","r").each do |line|
+  open("input.txt","r").each do |line|
     line.chomp!
     line = line.split("")
     # find value of first digit 
@@ -35,12 +36,7 @@ def part2
 
     w_first_idx = {}
     w_last_idx = {}
-    # p (line.join("")).rindex(/num/)
     # this is so bad, this is actually halarious 
-    # i dont understand why some times
-    # 'eighttwothree'
-    # returns [["two", 4], ["three", 7]]
-    # WHY DOES IT JUST SKIP 8????????????????
     (1..10).each do |i|
       if i == 1 
         w_first_idx["one"] = (line.join("")).index('one')
@@ -88,10 +84,53 @@ def part2
 
     w_last_idx = w_last_idx.to_a .filter{|n| n[1] != nil} .max{|a, b| a[1] <=> b[1]}
 
-    p [w_first_idx, w_last_idx]
+    # so now this is the easy part 
+    # we want to get the first number, that is digit or word 
+    # then we want to get last number, that is digir or word 
+
+    n = ""
+    # dig_first_idx
+    # dig_last_idx
+    # is the index of a number found 
+    # check if these are nil
+    # "1" <- index
+    # "2" line[dig_first_idx]
+
+    # w_first_idx
+    # w_last_idx
+    # is the [number, index] of first letter word we found 
+    # ["eight", 0]
+
+    if not dig_first_idx.nil?
+      if w_first_idx.nil?
+        n << line[dig_first_idx]
+      
+      elsif dig_first_idx.to_i < w_first_idx[1].to_i
+        n << line[dig_first_idx]
+      else 
+        n << nums[w_first_idx[0]]
+      end 
+    else 
+      n << nums[w_first_idx[0]]
+    end
+
+    if not dig_last_idx.nil?
+      if w_last_idx.nil?
+        n << line[dig_last_idx]
+
+      elsif dig_last_idx.to_i < w_last_idx[1].to_i
+        n << line[dig_last_idx]
+      else 
+        n << nums[w_last_idx[0]]
+      end 
+    else
+      n << nums[w_last_idx[0]]
+    end
+    
+    x += n.to_i
   end
 
-  return x
+  return x 
 end
 
 puts "Part 1: #{part1}"
