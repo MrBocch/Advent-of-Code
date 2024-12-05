@@ -61,15 +61,42 @@ def part2
   end
 
   # fix the incorrect line and sum up mid
-  sum = 0
   incorrect = []
   matrix.each do |line|
     incorrect << line if !valid_update(comes_after, line)
   end
 
-  # correct a bad list... how
+  # i thought of this as soon as a pushed this file, just swap the values that are wrong?
+  # because we know each list does not have repeat numbers, this shoould not be to hard
+  sum = 0
+  incorrect.each do |inc|
+    while !valid_update(comes_after, inc)
+      idx = get_index_of_wrong(comes_after, inc)
+      temp = inc[idx-1]
+      inc[idx-1] = inc[idx]
+      inc[idx] = temp
+    end
+    # list is now correct
+    sum += inc[inc.length/2]
+  end
 
   return sum
+end
+
+def get_index_of_wrong(rules, list)
+  passed = []
+  list.each_with_index do |n, index|
+    # puts "#{n} goes before #{rules[n]}"
+    if passed.empty? then passed << n; next end
+
+    if not (passed & rules[n]).any?
+      passed << n
+    else
+      return index
+    end
+  end
+
+  return true
 end
 
 puts "part1: #{part1}"
