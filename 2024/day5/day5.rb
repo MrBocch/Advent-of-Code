@@ -74,9 +74,7 @@ def part2
   incorrect.each do |inc|
     while !valid_update(comes_after, inc)
       idx = get_index_of_wrong(comes_after, inc)
-      temp = inc[idx-1]
-      inc[idx-1] = inc[idx]
-      inc[idx] = temp
+      inc[idx-1], inc[idx] = inc[idx], inc[idx-1]
     end
     # list is now correct
     sum += inc[inc.length/2]
@@ -100,6 +98,8 @@ def get_index_of_wrong(rules, list)
 
   return true
 end
+
+
 
 puts "part1: #{part1}"
 puts "part2: #{part2}"
