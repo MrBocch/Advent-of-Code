@@ -68,6 +68,8 @@ def part2
 
   # i thought of this as soon as a pushed this file, just swap the values that are wrong?
   # because we know each list does not have repeat numbers, this shoould not be to hard
+  # cant just swap the numbers that are wrong or put the wrong number just behind the other
+  # to make it correct because i only have one pair
   sum = 0
   incorrect.each do |inc|
     while !valid_update(comes_after, inc)
