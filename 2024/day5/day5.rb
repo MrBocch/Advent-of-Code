@@ -99,8 +99,6 @@ def get_index_of_wrong(rules, list)
   return true
 end
 
-
-
 puts "part1: #{part1}"
 puts "part2: #{part2}"
 
