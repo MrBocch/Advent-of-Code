@@ -23,10 +23,7 @@ main = do
 --
 solver1 tuple = solver1' (fst tuple) (head $ snd tuple) (tail $ snd tuple)
 
-solver1' target carry [] = if target == carry then True else False
-solver1' target carry (x:[]) = (solver1' target (carry + x) []) ||
-                              (solver1' target (carry * x) [])
-
+solver1' target carry [] = target == carry
 solver1' target carry (x:xs) = if carry > target then False else
                 (solver1' target (carry + x) xs) ||
                 (solver1' target (carry * x) xs)
@@ -34,11 +31,7 @@ solver1' target carry (x:xs) = if carry > target then False else
 --part2, same function, now you just add the pipe op, with concats to numbers
 solver2 tuple = solver2' (fst tuple) (head $ snd tuple) (tail $ snd tuple)
 
-solver2' target carry [] = if target == carry then True else False
-solver2' target carry (x:[]) = (solver2' target ((+) carry x) []) ||
-                              (solver2' target ((*) carry x) []) ||
-                              (solver2' target ((pipeOp) carry x) []) -- the new operator
-
+solver2' target carry [] = target == carry
 solver2' target carry (x:xs) = if carry > target then False else
                 (solver2' target ((+) carry x) xs) ||
                 (solver2' target ((*) carry x) xs) ||
