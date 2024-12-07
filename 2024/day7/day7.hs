@@ -37,7 +37,7 @@ solver2 tuple = solver2' (fst tuple) (head $ snd tuple) (tail $ snd tuple)
 solver2' target carry [] = if target == carry then True else False
 solver2' target carry (x:[]) = (solver2' target ((+) carry x) []) ||
                               (solver2' target ((*) carry x) []) ||
-                              (solver2' target ((pipeOp) carry x) [])
+                              (solver2' target ((pipeOp) carry x) []) -- the new operator
 
 solver2' target carry (x:xs) = if carry > target then False else
                 (solver2' target ((+) carry x) xs) ||
