@@ -9,5 +9,10 @@
 *.txt
 .DS_Store
 
+# crystal
 *.dwarf
 *.out
+
+# haskell
+*.hi
+*.o
