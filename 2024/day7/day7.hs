@@ -11,7 +11,7 @@ main = do
     -- map strings "x: y w z" into (x, [y, w, z])
     let processed = map processString linesOfFile
     -- only valid operators
-    let valid = filter solver processed
+    let valid = filter solver1 processed
     -- sum x of valid operators
     let p1_ans = sum (map fst valid)
     putStrLn ("part1: " ++ show p1_ans)
@@ -19,17 +19,17 @@ main = do
     let valid = filter solver2 processed
     let p2_ans = sum (map fst valid)
     putStrLn ("part2: " ++ show p2_ans)
+--
+--
+solver1 tuple = solver1' (fst tuple) (head $ snd tuple) (tail $ snd tuple)
 
+solver1' target carry [] = if target == carry then True else False
+solver1' target carry (x:[]) = (solver1' target (carry + x) []) ||
+                              (solver1' target (carry * x) [])
 
-solver tuple = solver' (fst tuple) (head $ snd tuple) (tail $ snd tuple)
-
-solver' target carry [] = if target == carry then True else False
-solver' target carry (x:[]) = (solver' target (carry + x) []) ||
-                              (solver' target (carry * x) [])
-
-solver' target carry (x:xs) = if carry > target then False else
-                (solver' target (carry + x) xs) ||
-                (solver' target (carry * x) xs)
+solver1' target carry (x:xs) = if carry > target then False else
+                (solver1' target (carry + x) xs) ||
+                (solver1' target (carry * x) xs)
 
 --part2, same function, now you just add the pipe op, with concats to numbers
 solver2 tuple = solver2' (fst tuple) (head $ snd tuple) (tail $ snd tuple)
