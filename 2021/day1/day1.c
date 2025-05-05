@@ -54,9 +54,11 @@ int part_2(FILE* file){
     // these are horibble variable names
     // last_2, last_1, curr, ..........n
     // turns out you cant even check if a int is uninitialized WOW
+    // is the start variable necessary?
     int last_1 = -1;
     int last_2 = -1;
     int curr;
+
     int prevsum = -1;
     int currsum;
     int increments = 0;
@@ -73,9 +75,12 @@ int part_2(FILE* file){
         }
         if(last_2 == -1){
             last_2 = last_1;
+            // i forgot this
             last_1 = curr;
             continue;
         }
+
+        currsum = curr + last_1 + last_2;
 
         if(prevsum == -1){
             prevsum = currsum;
@@ -84,14 +89,12 @@ int part_2(FILE* file){
             continue;
         }
 
-        currsum = curr + last_1 + last_2;
 
 
-        printf("%d - %d - %d\n", last_2, last_1, curr);
         if(prevsum < currsum) increments += 1;
         prevsum = currsum;
-        last_1 = last_2;
-        last_2 = curr;
+        last_2 = last_1;
+        last_1 = curr;
     }
 
     return increments;
