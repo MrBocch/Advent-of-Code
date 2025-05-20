@@ -30,7 +30,7 @@ last2 chars =
     in
     case n of
         Just num -> num
-        _ -> -1
+        _ -> Debug.todo "Not fail silently now"
 
 solver1 str = str
     |> toLines
@@ -67,7 +67,7 @@ part2 =
 -- dont think you can import directly from a file
 -- how you can with other FP languages
 -- input : String
--- input = """3fiveone ..........
+-- input = """3fiveone"""
 
 -- I wont track the entire input
 -- inside the elm file, it will appear as if
