@@ -16,3 +16,7 @@
 # haskell
 *.hi
 *.o
+
+# elm 
+elm-stuff
+elm.json
