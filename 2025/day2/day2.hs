@@ -21,12 +21,9 @@ isValidID :: Integer -> Bool
 isValidID n
   | (odd . Prelude.length . show) n = Prelude.True
   | otherwise = (check . splitInTwo . show) n 
-
   where
     check :: (String, String) -> Bool
     check p = fst p /= snd p 
-
-ranges = parseRange . toRanges 
 
 part1 xs = sum $ Prelude.filter (not . isValidID) xs 
 
