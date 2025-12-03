@@ -25,17 +25,55 @@ isValidID n
     check :: (String, String) -> Bool
     check p = fst p /= snd p 
 
-part1 xs = sum $ filter (not . isValidID) xs 
+part1 = sum . filter (not . isValidID)  
 
+-- kids look away.
 isValid' :: Integer -> Bool
 isValid' n = check (show n) (length $ show n)
   where
+    -- why did i decide to write this????
+    -- my code is so bad, i dont want to rewrite it.
     isAll c s = all (== c) s
+
+    groupBy [] n = []
+    groupBy  s n = [take n s] ++ groupBy (drop n s) n
+
     check :: String -> Int -> Bool 
-    check s 1 = True 
+    check s 1 = False
     check s 2 = isAll (Prelude.head s) s 
     check s 3 = isAll (Prelude.head s) s 
+    -- should probably abstract this 
+    check s 4 =  (isAll (Prelude.head s) s)
+              || (isAll (head $ groupBy s 2) (groupBy s 2))
 
+    check s 5 =  (isAll (Prelude.head s) s)
+
+    check s 6 =  (isAll (Prelude.head s) s)
+              || (isAll (head $ groupBy s 2) (groupBy s 2))
+              || (isAll (head $ groupBy s 3) (groupBy s 3))
+              
+    check s 7 =  (isAll (Prelude.head s) s)
+
+    check s 8 =  (isAll (Prelude.head s) s)
+              || (isAll (head $ groupBy s 4) (groupBy s 4))
+              || (isAll (head $ groupBy s 2) (groupBy s 2))
+
+    check s 9 =  (isAll (Prelude.head s) s)
+              || (isAll (head $ groupBy s 3) (groupBy s 3))
+
+    check s 10 =  (isAll (Prelude.head s) s)
+               || (isAll (head $ groupBy s 5) (groupBy s 5))
+               || (isAll (head $ groupBy s 2) (groupBy s 2))
+
+    check s 11 =  (isAll (Prelude.head s) s)
+
+    check s 12 =  (isAll (Prelude.head s) s)
+               || (isAll (head $ groupBy s 6) (groupBy s 6))
+               || (isAll (head $ groupBy s 4) (groupBy s 4))
+               || (isAll (head $ groupBy s 3) (groupBy s 3))
+               || (isAll (head $ groupBy s 2) (groupBy s 2))
+
+part2 = sum . filter isValid'  
 
 main :: IO ()
 main = do
@@ -44,4 +82,5 @@ main = do
   putStrLn "Part 1"
   print (part1 intr)
   putStrLn "Part 2"
+  print (part2 intr)
   
