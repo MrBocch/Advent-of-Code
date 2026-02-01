@@ -38,7 +38,7 @@ part1 m = forLoop 0 0 0
                          ]
       
     forLoop i j acc 
-      | i >= rows = acc  
+      | i >= rows =  acc  
       | j >= cols = forLoop (i+1) 0 acc 
       | otherwise = forLoop i (j+1) (acc + (if countNeighbors i j < 3 then 1 else 0))
  
