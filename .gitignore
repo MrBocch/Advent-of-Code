@@ -9,7 +9,7 @@
 # It did not occur to me that this also ignores
 # all the notes.txt that (I think I remember having)
 # WOW, thats all gone now....
-*.txt
+input.txt
 
 .DS_Store
 
